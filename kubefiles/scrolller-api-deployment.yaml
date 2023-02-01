@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scrolller-api-deployment
+  labels:
+    app: scrolller-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels: 
+      app: scrolller-api
+  template:
+    metadata:
+      labels:
+        app: scrolller-api
+    spec:
+      containers:
+        - name: scrolller-api-container
+          image: localhost:32000/scrolller-api:v3
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000

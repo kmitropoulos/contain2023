@@ -1,0 +1,19 @@
+Sample run (where apiurl in frontend is localhost in web/src/utils/constants.ts)
+
+To build the images in docker:
+
+sudo docker build -t scrolller-api:v1 . (this is run inside api folder)
+sudo docker build -t scrolller-web:v1 . (this is run inside web folder)
+
+
+To run the images in docker:
+sudo docker run -p 5173:80 scrolller-web:v1 (web needs to be run from port 5173 in order to pass cors check)
+sudo docker run -p 8000:8000 scrolller-api:v1 (api is coded at 8000)
+
+
+To add images in microk8s registry:
+sudo docker tag scrolller-web:v1 localhost:32000/scrolller-web:v1
+sudo docker push localhost:32000/scrolller-web:v1
+
+sudo docker tag scrolller-api:v1 localhost:32000/scrolller-api:v1
+sudo docker push localhost:32000/scrolller-api:v1
